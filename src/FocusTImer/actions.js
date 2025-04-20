@@ -1,5 +1,6 @@
 import state from './state.js';
 import * as timer from './timer.js';
+import * as element from './elements.js'
 
 export function toggleRunning() {
   state.isRunning = document.documentElement.classList.toggle('running');
@@ -8,7 +9,8 @@ export function toggleRunning() {
 }
 
 export function set() {
-
+  element.minutes.setAttribute('contenteditable', true);
+  element.minutes.focus();
 }
 
 export function reset() {

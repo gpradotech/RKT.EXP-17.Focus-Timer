@@ -4,6 +4,8 @@ import { reset } from './actions.js'
 import { kitchenTimer } from './sounds.js';
 
 export function countdown() {
+  clearTimeout(state.countdownId) // limpa o timeout anterior, se houver
+  
   if(!state.isRunning) return  // se o timer não estiver rodando, não faz nada
   
   let minutes = Number(element.minutes.textContent) // pega o valor do elemento minutes e transforma em número
@@ -23,7 +25,7 @@ export function countdown() {
   }
   updateDisplay(minutes, seconds) // atualiza o display com os novos valores
 
-  setTimeout(() => countdown(), 1000)
+  state.countdownId = setTimeout(() => countdown(), 1000)
 
   console.log('contagem regressiva')
 }

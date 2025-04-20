@@ -1,6 +1,7 @@
 import state from './state.js';
 import * as element from './elements.js'
 import { reset } from './actions.js'
+import { kitchenTimer } from './sounds.js';
 
 export function countdown() {
   if(!state.isRunning) return  // se o timer não estiver rodando, não faz nada
@@ -17,6 +18,7 @@ export function countdown() {
 
   if (minutes < 0) {
     reset() // reseta os controladores quando os minutos forem menores que 0
+    kitchenTimer.play() // toca o som do timer
     return // se os minutos forem menores que 0, então ele para a contagem regressiva
   }
   updateDisplay(minutes, seconds) // atualiza o display com os novos valores
